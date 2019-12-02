@@ -1,25 +1,25 @@
 import React from "react";
-
+import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
+import clean from "../cleanText";
 class Results extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     return (
-      <table>
-        <thead>
-          <th>Date</th>
-          <th>Description</th>
-        </thead>
+      <Timeline>
         {this.props.currentResults.map((event) => {
           return (
-            <tr>
-              <td>{event.date}</td>
-              <td>{event.description}</td>
-            </tr>
+            <TimelineItem
+              dateText={clean.date(event.date)}
+              style={{ color: "#337ab7", background: "#337ab7" }}
+            >
+              <td>{clean.description(event.description)}</td>
+            </TimelineItem>
           );
         })}
-      </table>
+      </Timeline>
     );
   }
 }

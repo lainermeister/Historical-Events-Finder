@@ -12,11 +12,15 @@ class Search extends React.Component {
     return (
       <div>
         <form onSubmit={() => this.props.queryHandler(event, this.state.query)}>
-          <input
-            type="text"
-            value={this.state.query}
-            onChange={({ target }) => this.setState({ query: target.value })}
-          />
+          <div className="form-group">
+            <label>Enter your search query: </label>
+            <input
+              className="form-control"
+              type="text"
+              value={this.state.query}
+              onChange={({ target }) => this.setState({ query: target.value })}
+            />
+          </div>
         </form>
       </div>
     );
