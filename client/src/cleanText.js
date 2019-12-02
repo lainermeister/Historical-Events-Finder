@@ -9,23 +9,23 @@ module.exports = {
                 startText !== -1 && endText !== -1 &&
                 desc.indexOf(closeTag) !== -1) {
                 cleanDesc += desc.slice(startText, endText);
-                let nextOpen = desc.indexOf(openTag, endText + 1);
-                let nextClose = desc.indexOf(closeTag, endText + 1);
+                let nextOpen = desc.indexOf(openTag, endText + openTag.length);
+                let nextClose = desc.indexOf(closeTag, endText + openTag.length);
                 while (nextOpen < nextClose && nextOpen !== -1 && nextClose != -1) {
-                    nextOpen = desc.indexOf(openTag, nextOpen + 1);
-                    nextClose = desc.indexOf(closeTag, nextClose + 1);
+                    nextOpen = desc.indexOf(openTag, nextOpen + openTag.length);
+                    nextClose = desc.indexOf(closeTag, nextClose + openTag.length);
                 }
-                startText = nextClose + 1;
+                startText = nextClose + closeTag.length;
                 endText = desc.indexOf(openTag, startText)
             }
             cleanDesc += desc.slice(startText)
             desc = cleanDesc;
         };
         removeTags("{", "}");
-        removeTags("<", ">");
-
-        return desc.split(" ").filter(word => word.length < 30).join(" ")
-
+        removeTags("<a", "</a>");
+        // removeTags("amp", "amp");
+        return desc;
+        // return desc.split(" ").filter(word => word.length < 30).join(" ")
     },
     date: (date) => {
         const BC = date.indexOf("-") !== -1 ? true : false;
@@ -35,4 +35,3 @@ module.exports = {
     }
 }
 
-// console.log(module.exports.description("The first commitment period of the Kyoto Protocol ends.{{cite journal"))
