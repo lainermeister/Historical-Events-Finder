@@ -36,3 +36,23 @@ The JSON dataset contains ~40k historical events formatted messily. For example,
 - `axios` for API requests
 - `react-paginate` to paginate the list of events
 - `vertical-timeline-component-for-react` to display event results in a digestible format
+
+## To run app
+
+First install dependencies:
+
+```sh
+npm install
+```
+
+Then start the server:
+
+```sh
+npm run server-dev
+```
+
+Then start build:
+
+```sh
+npm run build-dev
+```
